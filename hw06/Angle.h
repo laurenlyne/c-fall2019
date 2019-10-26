@@ -5,6 +5,8 @@
 class Angle {
 private:
     double angle=0;
+    double direction=0;
+    double turn=0;
 
 public:
     Angle();
@@ -12,13 +14,22 @@ public:
     virtual ~Angle();
     
     double getAngle() const;
+    double getSin() const;
+    double getCos() const;
+    double getSpeed() const;
     
-    void set(double angle);
+    double getDirection() const;
+    double getTurn() const;
+    
+    
+    void set1(double angle);
+    void set2(double direction, double turn);
 
     Angle operator+ (const Angle& angle) const;
     
     Angle operator- (const Angle& angle) const;
     
+  
     friend std :: ostream& operator <<(std :: ostream& out, const Angle& angle);
     };
 
