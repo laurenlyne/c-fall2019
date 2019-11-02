@@ -1,8 +1,23 @@
-#include<stdio.h>
-#include "function.h"
-#include <jpeglib.h>
-#include <stdlib.h>
-int write_jpeg_file( unsigned char* pixel, char *filename, unsigned int width, unsigned int height)
+#include <utility>
+#inclue <iostream>
+#include "image.h"
+
+void readPPM(FILE* fileName)
+{
+    fileName= fopen("ppm.txt","rb");
+    
+    char pSix[3];
+    fscanf(fileName,"%s\n", pSix);
+    fscanf(fileName,"%d\n %d\n",&width,&height);
+    fscanf(fileName,"%d\n", max);
+    
+    unsigned char* pixel=  new unsigned char[3 * *width * *height];
+    fread(pixel, sizeof(pixel),3 * *width * *height,fileName);
+    fclose(fileName);
+    return pixel;
+}
+void write_jpeg_file(char *filename)
+
 {
     struct jpeg_compress_struct cinfo;
     struct jpeg_error_mgr jerr;
@@ -40,4 +55,27 @@ int write_jpeg_file( unsigned char* pixel, char *filename, unsigned int width, u
     fclose( outfile );
     
     return 1;
+}
+
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
